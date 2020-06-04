@@ -16,7 +16,7 @@ historical_data.append(new_day)
 
 #Line Plot
 historical_data.set_index('Province_State')['Deaths'].plot(figsize=(200, 5), linewidth=1.5, color='maroon')
-plt.xlabel("State", labelpad=10)
+plt.xlabel("Date", labelpad=10)
 plt.ylabel("Deaths", labelpad=10)
 plt.title("COVID-19 Deaths", y=1.02, fontsize=22)
 plt.show()
