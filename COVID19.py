@@ -1,11 +1,17 @@
+#importing dependencies
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+import datetime
 
+#obtaining data
 new_day = pd.read_csv("06-01-2020.csv")
 historical_data = pd.read_csv("COVID19_Data")
 
+#cleaning data
 new_day = new_day[["Province_State", "Confirmed", "Deaths","Recovered", "People_Tested", "People_Hospitalized", "Mortality_Rate", "Testing_Rate", "Hospitalization_Rate"]]
+current_date = datetime.date.today().strftime('%d %b %Y')
+new_day.insert(2, 'new-col', current_date)
 new_day = new_day.iloc[19]
 historical_data.append(new_day)
 
