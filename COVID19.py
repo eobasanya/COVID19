@@ -9,11 +9,12 @@ new_day = pd.read_csv("06-01-2020.csv")
 historical_data = pd.read_csv("COVID19_Data")
 
 #cleaning data
-new_day = new_day[["Province_State", "Confirmed", "Deaths","Recovered", "People_Tested", "People_Hospitalized", "Mortality_Rate", "Testing_Rate", "Hospitalization_Rate"]]
-current_date = datetime.date.today().strftime('%d %b %Y')
-new_day.insert(0, 'Date', current_date)
-new_day = new_day.iloc[19:20]
-historical_data = historical_data.append(new_day)
+new_day = new_day[["Province_State", "Last_Update", "Confirmed", "Deaths","Recovered","Active", "Incident_Rate", "People_Tested", "People_Hospitalized", "Mortality_Rate", "Testing_Rate", "Hospitalization_Rate"]]
+#current_date = datetime.date.today().strftime('%m/%d/%Y')
+new_day[['Date', 'Time']] = new_day["Last_Update"].str.split(' ', expand=True)
+new_day = new_day[["Date", "Confirmed", "Deaths","Recovered","Active", "Incident_Rate", "People_Tested", "People_Hospitalized", "Mortality_Rate", "Testing_Rate", "Hospitalization_Rate"]]
+new_day = new_day.iloc[16:17]
+historical_data = historical_data.append(new_day, ignore_index=True)
 
 
 #Scatter Plot
