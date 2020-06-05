@@ -21,11 +21,20 @@ historical_data = historical_data.append(new_day, ignore_index=True)
 #May3.plot.scatter(x="Province_State", y="Confirmed", c = "cyan")
 #plt.rcParams.update({'font.size': 22})
 
-#Line Plot
-historical_data.set_index('Province_State')['Deaths'].plot(figsize=(200, 5), linewidth=1.5, color='maroon')
+#Line Plot - COVID Mortality Rate - Illinois
+historical_data.set_index('Date')['Mortality_Rate'].plot(figsize=(100, 5), linewidth=0.7, color='maroon')
 plt.xlabel("Date", labelpad=10)
-plt.ylabel("Deaths", labelpad=10)
-plt.title("COVID-19 Deaths", y=1.02, fontsize=22)
+plt.ylabel("Mortality_Rate", labelpad=10)
+plt.title("COVID-19", y=1.02, fontsize=22)
 plt.show()
+
+
+#Line Plot: COVID-19 Deaths - Illinois
+#plot1= historical_data.set_index('Date')['Deaths'].plot(figsize=(200, 5), linewidth=1.5, color='maroon')
+#plt.xlabel("Date", labelpad=10)
+#plt.ylabel("Deaths", labelpad=10)
+#plt.title("COVID-19 Illinois", y=1.02, fontsize=22)
+#plt.show()
+
 #save updated historical data file
 historical_data.to_csv("COVID19_Data.csv")
