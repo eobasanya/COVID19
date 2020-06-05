@@ -13,7 +13,7 @@ new_day = new_day[["Province_State", "Confirmed", "Deaths","Recovered", "People_
 current_date = datetime.date.today().strftime('%d %b %Y')
 new_day.insert(0, 'Date', current_date)
 new_day = new_day.iloc[19]
-historical_data.append(new_day)
+historical_data = historical_data.append(new_day)
 
 
 #Scatter Plot
