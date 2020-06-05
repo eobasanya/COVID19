@@ -12,7 +12,7 @@ historical_data = pd.read_csv("COVID19_Data")
 new_day = new_day[["Province_State", "Confirmed", "Deaths","Recovered", "People_Tested", "People_Hospitalized", "Mortality_Rate", "Testing_Rate", "Hospitalization_Rate"]]
 current_date = datetime.date.today().strftime('%d %b %Y')
 new_day.insert(0, 'Date', current_date)
-new_day = new_day.iloc[19]
+new_day = new_day.iloc[19:20]
 historical_data = historical_data.append(new_day)
 
 
