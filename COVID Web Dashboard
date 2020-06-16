@@ -22,6 +22,7 @@ add_selectbox = st.sidebar.selectbox(
     ("Email", "Home phone", "Mobile phone")
 )
 
+
 st.header(
 """ 
 COVID19 Health Data - Illinois
