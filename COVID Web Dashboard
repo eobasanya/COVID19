@@ -12,9 +12,7 @@ new_day[['Date', 'Time']] = new_day["Last_Update"].str.split(' ', expand=True)
 new_day = new_day[["Date", "Confirmed", "Deaths","Active", "Incident_Rate", "People_Tested", "Mortality_Rate", "Testing_Rate"]]
 new_day = new_day.iloc[17:18]
 historical_data = historical_data.append(new_day)
-historical_data2 = historical_data[["Date", "Confirmed", "Deaths"]]
-
-
+historical_data = historical_data.rename(columns={'Date':'index'}).set_index('index')
 
 st.title("Elijah Obasanya : Data Engineer")
 add_selectbox = st.sidebar.selectbox(
