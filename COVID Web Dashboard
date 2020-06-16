@@ -1,0 +1,33 @@
+import pandas as pd
+import datetime
+import streamlit as st 
+
+new_day = pd.read_csv("06-04-2020.csv")
+historical_data = pd.read_csv("COVID19_Data.csv")
+
+new_day = new_day[["Province_State", "Last_Update", "Confirmed", "Deaths","Active", "Incident_Rate", "People_Tested", "Mortality_Rate", "Testing_Rate"]]
+#current_date = datetime.date.today().strftime('%m/%d/%Y') ## Used for auto updating new day in dataset
+new_day[['Date', 'Time']] = new_day["Last_Update"].str.split(' ', expand=True)
+
+new_day = new_day[["Date", "Confirmed", "Deaths","Active", "Incident_Rate", "People_Tested", "Mortality_Rate", "Testing_Rate"]]
+new_day = new_day.iloc[17:18]
+historical_data = historical_data.append(new_day)
+historical_data2 = historical_data[["Date", "Confirmed", "Deaths"]]
+
+
+
+st.title("Elijah Obasanya : Data Engineer")
+add_selectbox = st.sidebar.selectbox(
+    "How would you like to be contacted?",
+    ("Email", "Home phone", "Mobile phone")
+)
+
+st.header(
+""" 
+COVID19 Health Data - Illinois
+""")
+st.line_chart(historical_data)
+st.area_chart(historical_data)
+st.bar_chart(historical_data)
+st.subheader('Raw data')
+st.write(historical_data)
